@@ -1,5 +1,5 @@
-<div class="row">
-  
+<div class="row row-eq-height">
+
   {{#each products}}
   <div class="col-lg-4 col-md-6 mb-4">
     <div class="card h-100">
@@ -10,9 +10,56 @@
         <h4 class="card-title">
           <a href="#">{{this.name}}</a>
         </h4>
-        <h5>in stock {{this.instock}}</h5><i class="fas fa-cart-plus"></i>
+        <div class="container mt-3">
 
-        <p class="card-text">{{this.store}}</p>
+          <!-- Button to Open the Modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal{{this.id}}">
+            about
+          </button>
+
+          <!-- The Modal -->
+          <div class="modal fade" id="modal{{this.id}}">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">{{this.name}}</h4>
+                  <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <p>{{this.description}}</p>
+                  <p>Available from the store in {{this.store}}</p>
+                  <h6>{{this.price}} {{this.currency}}</h6>
+                  {{#if this.instock}}
+                  <a href="#">add to cart
+                    <i class="fas fa-cart-plus"></i>
+                  </a>
+                  {{else}}
+                  <h6>out of stock</h6>
+                  {{/if}}
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+        {{#if this.instock}}
+        <a href="#">add to cart
+          <i class="fas fa-cart-plus"></i>
+        </a>
+        {{else}}
+        <h5>out of stock</h5>
+        {{/if}}
+        <p class="card-text">sold in {{this.store}}</p>
       </div>
       <div class="card-footer">
         <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>

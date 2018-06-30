@@ -13,4 +13,8 @@
       padding-top: 56px;
     }
   }
-  
+
+  #navbarTop {
+    border: rgb(103, 104, 106);
+    border-width: 2px;
+  }
